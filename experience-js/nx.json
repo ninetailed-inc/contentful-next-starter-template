@@ -1,0 +1,37 @@
+{
+  "extends": "@nrwl/workspace/presets/core.json",
+  "npmScope": "ninetailed",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/next"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/gatsby": {
+      "application": {
+        "style": "css"
+      }
+    }
+  },
+  "defaultProject": "test-next-js"
+}

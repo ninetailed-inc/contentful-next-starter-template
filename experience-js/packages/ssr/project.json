@@ -1,0 +1,42 @@
+{
+  "root": "packages/ssr",
+  "sourceRoot": "packages/ssr/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/ssr",
+        "tsConfig": "packages/ssr/tsconfig.lib.json",
+        "project": "packages/ssr/package.json",
+        "entryFile": "packages/ssr/src/index.ts",
+        "external": [],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "assets": [
+          {
+            "glob": "packages/ssr/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/ssr/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ssr"],
+      "options": {
+        "jestConfig": "packages/ssr/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

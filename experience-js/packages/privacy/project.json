@@ -1,0 +1,33 @@
+{
+  "root": "packages/privacy",
+  "sourceRoot": "packages/privacy/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/privacy",
+        "tsConfig": "packages/privacy/tsconfig.lib.json",
+        "packageJson": "packages/privacy/package.json",
+        "main": "packages/privacy/src/index.ts",
+        "assets": ["packages/privacy/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/privacy/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/privacy"],
+      "options": {
+        "jestConfig": "packages/privacy/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

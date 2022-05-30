@@ -1,0 +1,48 @@
+{
+  "root": "packages/nextjs",
+  "sourceRoot": "packages/nextjs/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/nextjs",
+        "tsConfig": "packages/nextjs/tsconfig.lib.json",
+        "project": "packages/nextjs/package.json",
+        "entryFile": "packages/nextjs/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "assets": [
+          {
+            "glob": "packages/nextjs/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/nextjs/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/nextjs"],
+      "options": {
+        "jestConfig": "packages/nextjs/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

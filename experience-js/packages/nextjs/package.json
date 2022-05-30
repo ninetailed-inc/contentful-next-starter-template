@@ -1,0 +1,8 @@
+{
+  "name": "@ninetailed/experience.js-next",
+  "version": "1.7.2",
+  "peerDependencies": {
+    "next": ">=9.0.0",
+    "react": ">=16.8.0"
+  }
+}

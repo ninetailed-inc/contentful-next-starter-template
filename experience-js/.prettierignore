@@ -1,0 +1,8 @@
+# Add files here to ignore them from prettier formatting
+
+/dist
+/coverage
+
+/apps/test-gastby/node_modules
+/apps/test-gastby/public
+/apps/test-gastby/.cache

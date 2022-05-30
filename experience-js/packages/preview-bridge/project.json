@@ -1,0 +1,43 @@
+{
+  "root": "packages/preview-bridge",
+  "sourceRoot": "packages/preview-bridge/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/preview-bridge",
+        "tsConfig": "packages/preview-bridge/tsconfig.lib.json",
+        "project": "packages/preview-bridge/package.json",
+        "entryFile": "packages/preview-bridge/src/index.ts",
+        "external": [],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "assets": [
+          {
+            "glob": "packages/preview-bridge/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/preview-bridge/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/preview-bridge"],
+      "options": {
+        "jestConfig": "packages/preview-bridge/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

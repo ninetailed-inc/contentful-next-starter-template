@@ -1,0 +1,34 @@
+{
+  "root": "packages/gatsby",
+  "sourceRoot": "packages/gatsby/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/gatsby",
+        "tsConfig": "packages/gatsby/tsconfig.lib.json",
+        "packageJson": "packages/gatsby/package.json",
+        "main": "packages/gatsby/index.ts",
+        "external": ["react", "react-dom", "react-is"],
+        "assets": ["packages/gatsby/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/gatsby/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/gatsby"],
+      "options": {
+        "jestConfig": "packages/gatsby/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
