@@ -1,36 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import * as Contentful from 'contentful';
-import * as CFRichTextTypes from '@contentful/rich-text-types';
 import { RichText } from '@/components/RichText';
 import { Button, ButtonVariant } from '@/components/Button';
 import { ContentfulImageLoader } from '@/lib/helperfunctions';
 
-import { IButton } from '@/types/contentful';
+import { IFeature } from '@/types/contentful';
 
-interface TypeComponentFeatureFields {
-  headline: CFRichTextTypes.Block | CFRichTextTypes.Inline;
-  subline: CFRichTextTypes.Block | CFRichTextTypes.Inline;
-  button: IButton[];
-  image: Contentful.Asset;
-  imagePosition: Contentful.EntryFields.Symbol;
-}
-
-type TypeComponentFeature = Contentful.Entry<TypeComponentFeatureFields>;
-
-export const Feature: React.FC<TypeComponentFeature> = ({ fields }) => {
+export const Feature: React.FC<IFeature> = ({ fields }) => {
   return (
     <div className="relative max-w-xl mx-auto lg:max-w-7xl px-4 sm:max-w-3xl sm:px-6 sm:py-6 lg:px-12">
       <div className="relative mt-2 lg:mt-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-center">
-        {/* Hero section */}
-        {/*
-        TODO
-        Check if "null" return can be replaced with empty string
-        */}
         <div
-          className={`relative ${
-            fields.imagePosition !== 'right' ? null : ' order-last'
+          className={`relative${
+            fields.imagePosition !== 'right' ? '' : ' order-last'
           }`}
         >
           <RichText
@@ -93,18 +76,6 @@ export const Feature: React.FC<TypeComponentFeature> = ({ fields }) => {
               fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
             />
           </svg>
-          {/* <Image
-            loader={ContentfulImageLoader}
-            src={`https:${fields.image.fields.file.url}`}
-            width={Math.min(576, fields.image.fields.file.details.image.width)}
-            height={
-              (fields.image.fields.file.details.image.height *
-                Math.min(576, fields.image.fields.file.details.image.width)) /
-              fields.image.fields.file.details.image.width
-            }
-            className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
-            alt=""
-          /> */}
           {fields.image.fields.file.details.image && (
             <Image
               loader={ContentfulImageLoader}

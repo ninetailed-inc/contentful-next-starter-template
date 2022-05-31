@@ -4,8 +4,6 @@ import { Button, ButtonVariant } from '@/components/Button';
 import { RichText } from '@/components/RichText';
 import { ICta } from '@/types/contentful';
 
-/* eslint-disable-next-line */
-
 export const CTA: React.FC<ICta> = ({ fields }) => {
   return (
     <div className="bg-white">
