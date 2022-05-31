@@ -2,15 +2,12 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { NextSeo } from 'next-seo';
 import get from 'lodash/get';
 
-import { useProfile } from '@ninetailed/experience.js-next';
 import { BlockRenderer } from '@/components/Renderer';
 import { getPagesOfType, getPage } from '@/lib/api';
 import { PAGE_CONTENT_TYPES } from '@/lib/constants';
 import { IPage } from '@/types/contentful';
 
 const Page = ({ page }: { page: IPage }) => {
-  const { loading, profile, error } = useProfile();
-  console.log({ 'SLUG:useProfile': profile });
   if (!page) {
     return null;
   }
@@ -43,24 +40,16 @@ const Page = ({ page }: { page: IPage }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, preview }) => {
-  console.log({ 'SLUG:params': params });
   const rawSlug = get(params, 'slug', []) as string[];
-  console.log({ 'SLUG:rawSlug': rawSlug });
-  const audiencesSlug = rawSlug[0] || '';
-  const isPersonalized = audiencesSlug.startsWith(';');
-  const audiences = isPersonalized
-    ? audiencesSlug.split(';')[1].split(',')
-    : [];
-  const slug = isPersonalized ? rawSlug.slice(1).join('/') : rawSlug.join('/');
+  const slug = rawSlug.join('/');
   const page = await getPage({
     preview,
     slug: slug === '' ? '/' : slug,
     pageContentType: PAGE_CONTENT_TYPES.PAGE,
     childPageContentType: PAGE_CONTENT_TYPES.LANDING_PAGE,
   });
-  /* console.log({ 'SLUG:page': page }); */
   return {
-    props: { page, ninetailed: { audiences } },
+    props: { page },
     revalidate: 5,
   };
 };
@@ -80,18 +69,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: page.fields.slug.split('/') },
       };
     });
-  /* console.log({ 'SLUG:paths': JSON.stringify(paths) }); */
-  /* return {
-    paths: [
-      { params: { slug: [''] } },
-      { params: { slug: [';7IRVaTD9GpZVprP7A8tSiE', 'pricing'] } },
-    ],
-    fallback: true,
-  }; */
-  /* return {
-    paths: [{ params: { slug: [''] } }, { params: { slug: ['pricing'] } }],
-    fallback: true,
-  }; */
   return {
     paths: [...paths, { params: { slug: [''] } }],
     fallback: true,
