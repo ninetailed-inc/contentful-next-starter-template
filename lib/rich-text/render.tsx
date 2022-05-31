@@ -5,7 +5,7 @@ import {
   RenderNode,
 } from '@contentful/rich-text-react-renderer';
 import { MergeTag } from '@ninetailed/experience.js-next';
-// import { EmbeddedAsset } from './embedded-asset';
+
 import { Hyperlink } from './hyperlink';
 
 export const isRichText = (x: Document | unknown): x is Document => {
@@ -13,7 +13,6 @@ export const isRichText = (x: Document | unknown): x is Document => {
     return has(x, prop);
   });
 };
-
 // @ts-ignore
 const PlainHyperlink = (props) => {
   return <Hyperlink {...props} type="PlainLink" />;

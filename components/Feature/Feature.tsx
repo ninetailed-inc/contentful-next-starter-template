@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import * as Contentful from 'contentful';
+import * as CFRichTextTypes from '@contentful/rich-text-types';
 import { RichText } from '@/components/RichText';
 import { Button, ButtonVariant } from '@/components/Button';
 import { ContentfulImageLoader } from '@/lib/helperfunctions';
-import * as CFRichTextTypes from '@contentful/rich-text-types';
-import * as Contentful from 'contentful';
+
 import { IButton } from '@/types/contentful';
 
 interface TypeComponentFeatureFields {

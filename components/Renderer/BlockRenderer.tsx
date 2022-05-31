@@ -48,7 +48,7 @@ type BlockRendererProps = {
 };
 
 const unwrapVariants = (
-  block: Contentful.Entry<PersonalizedFields<unknown>>
+  block: Contentful.Entry<PersonalizedFields<Block>>
 ): Variant<any>[] => {
   return (block.fields.nt_variants || [])
     .filter((variant) => {
@@ -66,6 +66,7 @@ const unwrapVariants = (
 };
 
 const BlockRenderer = ({ block }: BlockRendererProps) => {
+  console.log(block);
   if (Array.isArray(block)) {
     return (
       <>

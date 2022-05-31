@@ -1,69 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { SetStateAction, useEffect, useState } from 'react';
 import { useHubspotForm } from '@aaronhayes/react-use-hubspot-form';
 import { useNinetailed, useProfile } from '@ninetailed/experience.js-next';
-import * as Contentful from 'contentful';
 import find from 'lodash/find';
+import { IForm } from '@/types/contentful';
 
-interface TypeComponentFormFields {
-  hubspotFormId: Contentful.EntryFields.Symbol;
-  hubspotPortalId: Contentful.EntryFields.Symbol;
-  hubspotPortalRegion: Contentful.EntryFields.Symbol;
-}
-type TypeComponentForm = Contentful.Entry<TypeComponentFormFields>;
-
-export const Form: React.FC<TypeComponentForm> = ({ fields }) => {
+export const Form: React.FC<IForm> = ({ fields }) => {
   const { loading, profile } = useProfile();
   const { identify } = useNinetailed();
-  const [anonymousIdInput, setAnonymousIdInput] = useState(null);
-  const [submitData, setSubmitData] = useState(null);
+  const [anonymousIdInput, setAnonymousIdInput] =
+    useState<HTMLInputElement | null>(null);
+  const [submitData, setSubmitData] = useState<Record<string, string>[]>();
   useEffect(() => {
-    const listener: EventListener = (event) => {
+    const listener = (event: MessageEvent<Record<any, any>>): void => {
+      console.log({ 'EVENT:': event });
       if (
-        // @ts-ignore
         event.data.type === 'hsFormCallback' &&
-        // @ts-ignore
         event.data.eventName === 'onFormReady'
       ) {
-        const formIframe = document.querySelector('#form > iframe');
+        const formIframe = document.querySelector(
+          '#form > iframe'
+        ) as HTMLIFrameElement;
         if (formIframe) {
-          // @ts-expect-error
-          const anonymousIdInputTemp = formIframe.contentDocument.querySelector(
-            'input[name=ninetailedid]'
-          );
+          const anonymousIdInputTemp =
+            formIframe.contentDocument?.querySelector(
+              'input[name=ninetailedid]'
+            ) as HTMLInputElement;
+          console.log(anonymousIdInputTemp);
           setAnonymousIdInput(anonymousIdInputTemp);
+        } else {
+          console.log(formIframe);
         }
       }
 
       if (
-        // @ts-ignore
         event.data.type === 'hsFormCallback' &&
-        // @ts-ignore
         event.data.eventName === 'onFormSubmit'
       ) {
-        // @ts-ignore
         setSubmitData(event.data.data);
       }
 
       if (
-        // @ts-ignore
         event.data.type === 'hsFormCallback' &&
-        // @ts-ignore
         event.data.eventName === 'onFormSubmitted'
       ) {
         console.log(submitData);
-        // @ts-expect-error
-        const anonymousId = find(submitData, { name: 'ninetailedid' }).value;
-        // @ts-expect-error
+        const anonymousIdObject = find(submitData, {
+          name: 'ninetailedid',
+        }) as { name: string; value: string };
+        const { value: anonymousId } = anonymousIdObject;
         const traits = submitData
-          // @ts-expect-error
-          .filter(({ name }) => {
+          ?.filter(({ name }) => {
             return name !== 'ninetailedid';
           })
-          // @ts-expect-error
-          .reduce((acc, curr) => {
+
+          .reduce((acc: any, curr: any) => {
             return { ...acc, [curr.name]: curr.value };
           }, {});
-
         identify(anonymousId, traits);
       }
     };
@@ -74,18 +66,19 @@ export const Form: React.FC<TypeComponentForm> = ({ fields }) => {
   }, [setAnonymousIdInput, setSubmitData, submitData]);
 
   useEffect(() => {
-    // @ts-expect-error
-    if (anonymousIdInput && !loading && anonymousIdInput.value !== profile.id) {
+    if (
+      profile &&
+      anonymousIdInput &&
+      !loading &&
+      anonymousIdInput.value !== profile.id
+    ) {
       console.log('setting anonymousID');
-      // @ts-expect-error
       anonymousIdInput.value = profile.id;
     }
   }, [anonymousIdInput, loading, profile]);
 
   useHubspotForm({
     target: '#form',
-    // @ts-ignore
-    region: fields.hubspotPortalRegion,
     portalId: fields.hubspotPortalId,
     formId: fields.hubspotFormId,
   });

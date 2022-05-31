@@ -6,8 +6,6 @@ import { RichText } from '@/components/RichText';
 import { ContentfulImageLoader } from '@/lib/helperfunctions';
 import { IHero } from '@/types/contentful';
 
-/* eslint-disable-next-line */
-
 export const Hero: React.FC<IHero> = ({ fields }) => {
   return (
     <div className="bg-white pb-8 sm:pb-12 lg:pb-12">
