@@ -1,8 +1,14 @@
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHubspotForm } from '@aaronhayes/react-use-hubspot-form';
 import { useNinetailed, useProfile } from '@ninetailed/experience.js-next';
 import find from 'lodash/find';
 import { IForm } from '@/types/contentful';
+
+interface IMessageEvent {
+  type: string;
+  eventName: string;
+  data: Record<string, string>[] | undefined;
+}
 
 export const Form: React.FC<IForm> = ({ fields }) => {
   const { loading, profile } = useProfile();
@@ -11,8 +17,7 @@ export const Form: React.FC<IForm> = ({ fields }) => {
     useState<HTMLInputElement | null>(null);
   const [submitData, setSubmitData] = useState<Record<string, string>[]>();
   useEffect(() => {
-    const listener = (event: MessageEvent<Record<any, any>>): void => {
-      console.log({ 'EVENT:': event });
+    const listener = (event: MessageEvent<IMessageEvent>): void => {
       if (
         event.data.type === 'hsFormCallback' &&
         event.data.eventName === 'onFormReady'
@@ -27,8 +32,6 @@ export const Form: React.FC<IForm> = ({ fields }) => {
             ) as HTMLInputElement;
           console.log(anonymousIdInputTemp);
           setAnonymousIdInput(anonymousIdInputTemp);
-        } else {
-          console.log(formIframe);
         }
       }
 
@@ -43,7 +46,6 @@ export const Form: React.FC<IForm> = ({ fields }) => {
         event.data.type === 'hsFormCallback' &&
         event.data.eventName === 'onFormSubmitted'
       ) {
-        console.log(submitData);
         const anonymousIdObject = find(submitData, {
           name: 'ninetailedid',
         }) as { name: string; value: string };
@@ -52,11 +54,17 @@ export const Form: React.FC<IForm> = ({ fields }) => {
           ?.filter(({ name }) => {
             return name !== 'ninetailedid';
           })
-
-          .reduce((acc: any, curr: any) => {
+          .reduce((acc, curr) => {
             return { ...acc, [curr.name]: curr.value };
           }, {});
-        identify(anonymousId, traits);
+
+        identify(anonymousId, traits)
+          .then((_) => {
+            return _;
+          })
+          .catch((e: Error) => {
+            return e;
+          });
       }
     };
     window.addEventListener('message', listener);
@@ -72,13 +80,13 @@ export const Form: React.FC<IForm> = ({ fields }) => {
       !loading &&
       anonymousIdInput.value !== profile.id
     ) {
-      console.log('setting anonymousID');
       anonymousIdInput.value = profile.id;
     }
   }, [anonymousIdInput, loading, profile]);
 
   useHubspotForm({
     target: '#form',
+    /* region: fields.hubspotPortalRegion, */
     portalId: fields.hubspotPortalId,
     formId: fields.hubspotFormId,
   });
