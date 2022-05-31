@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { INavigation } from '@/types/contentful';
-import Logo from './logo.svg';
+import Logo from '@/public/logo.svg';
 
 export const Navigation: React.FC<INavigation> = ({ fields }) => {
   return (
@@ -11,10 +11,15 @@ export const Navigation: React.FC<INavigation> = ({ fields }) => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex justify-between items-center w-full py-6 border-b-2 border-gray-100 ">
           <div className="flex justify-start">
-            <Link passHref href="/">
-              <a>
+            <Link href="/">
+              <a href="/">
                 <span className="sr-only">Workflow</span>
-                <Image src={Logo} width={175} height={57} alt="Logo" />
+                <Image
+                  src={Logo as string}
+                  width={175}
+                  height={57}
+                  alt="Logo"
+                />
               </a>
             </Link>
           </div>
