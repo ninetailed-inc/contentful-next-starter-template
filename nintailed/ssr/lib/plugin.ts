@@ -9,7 +9,6 @@ export const NinetailedSsrPlugin = (): AnalyticsPlugin => {
   return {
     name: 'ninetailed:ssr',
     profile: ({ payload }) => {
-      console.log({ 'SSR:payload:': payload });
       if (payload.profile) {
         Cookies.set(NINETAILED_ANONYMOUS_ID_COOKIE, payload.profile.id);
       }

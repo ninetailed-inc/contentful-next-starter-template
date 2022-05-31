@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {
-  fetchEdgeProfile,
   buildNinetailedEdgeRequestContext,
-} from '../next-experience-esr';
+  fetchEdgeProfile,
+} from '../nintailed/next-esr';
 
 const excludedPrefixes = ['/favicon', '/api'];
 
