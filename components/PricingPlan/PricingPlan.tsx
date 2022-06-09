@@ -7,7 +7,6 @@ import { RichText } from '@/components/RichText';
 import { IPricingPlan } from '@/types/contentful';
 
 export const PricingPlan: React.FC<IPricingPlan> = (props) => {
-  // Nested destructuring
   const {
     fields: {
       title,
