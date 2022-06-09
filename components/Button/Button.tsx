@@ -14,29 +14,30 @@ export interface ButtonProps {
   type: ButtonType;
   size: ButtonSize;
   variant: ButtonVariant;
+  children: string;
   /* icon: (props: IconProps) => JSX.Element; */
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
-  // Destructuring the props
-  /* TODO
-   * Component type gets rendered as a button, however, this is not valid HTML
-   * https://html.spec.whatwg.org/multipage/text-level-semantics.html#a.attrs.type
-   * The "type" attribute must the source of the hyper reference source
-   * */
-  const {
-    as: Component = 'button',
-    type,
-    size,
-    variant,
-    children,
-    ...rest
-  } = props;
-  return (
-    <div>
+export const Button: React.FC<ButtonProps> = React.forwardRef(
+  (props: ButtonProps, ref) => {
+    /* TODO
+     * Component type gets rendered as a button, however, this is not valid HTML
+     * https://html.spec.whatwg.org/multipage/text-level-semantics.html#a.attrs.type
+     * The "type" attribute must the source of the hyper reference source
+     * */
+    const {
+      as: Component = 'button',
+      type,
+      size,
+      variant,
+      children,
+      ...rest
+    } = props;
+    return (
       <Component
         {...rest}
         type={type}
+        ref={ref}
         className={classNames(
           `w-full 
             flex  
@@ -59,9 +60,9 @@ export const Button: React.FC<ButtonProps> = (props) => {
       >
         {children}
       </Component>
-    </div>
-  );
-};
+    );
+  }
+);
 Button.defaultProps = {
   as: 'a',
 };

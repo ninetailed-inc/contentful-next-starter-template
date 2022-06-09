@@ -18,7 +18,7 @@ export const Banner: React.FC<IBanner> = ({ fields }) => {
     <div className={show ? 'relative bg-indigo-600' : 'hidden'}>
       <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div className="pr-16 sm:text-center sm:px-16">
-          <p className="font-medium text-white">
+          <div className="font-medium text-white">
             <RichText className="inline" richTextDocument={fields.text} />
             {fields.slug && fields.linkText && (
               <>
@@ -35,7 +35,7 @@ export const Banner: React.FC<IBanner> = ({ fields }) => {
                 <span aria-hidden="true"> &rarr;</span>
               </>
             )}
-          </p>
+          </div>
         </div>
         <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
           <button
