@@ -1,4 +1,5 @@
 import React from 'react';
+import { Document } from '@contentful/rich-text-types';
 import {
   isRichText,
   renderRichText,
@@ -6,17 +7,16 @@ import {
 } from '@/lib/rich-text';
 
 export interface RichTextProps {
-  richTextDocument: unknown;
+  richTextDocument: Document | undefined;
   classNames?: RenderRichTextOptions['classNames'];
   renderNode?: RenderRichTextOptions['renderNode'];
   className?: string;
 }
 
-// @ts-ignore
 export const RichText: React.FC<RichTextProps> = ({
   richTextDocument,
-  classNames = {},
-  renderNode = {},
+  classNames,
+  renderNode,
   ...rest
 }) => {
   if (isRichText(richTextDocument)) {
@@ -24,14 +24,22 @@ export const RichText: React.FC<RichTextProps> = ({
       classNames,
       renderNode,
     });
-
-    return React.Children.map(component, (child) => {
-      if (React.isValidElement(child)) {
-        return React.cloneElement(child, rest);
-      }
-      return child;
-    });
+    return (
+      <>
+        {React.Children.map(component, (child) => {
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, rest);
+          }
+          return null;
+        })}
+      </>
+    );
   }
-
   return null;
+};
+
+RichText.defaultProps = {
+  classNames: {},
+  renderNode: {},
+  className: '',
 };
