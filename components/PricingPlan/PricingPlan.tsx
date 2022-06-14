@@ -31,7 +31,7 @@ export const PricingPlan: React.FC<IPricingPlan> = (props) => {
             Most popular
           </p>
         ) : null}
-        <p className="mt-4 mb-2 flex items-baseline text-gray-900">
+        <div className="mt-4 mb-2 flex items-baseline text-gray-900">
           <RichText
             className="text-5xl font-extrabold tracking-tight"
             richTextDocument={price}
@@ -41,7 +41,7 @@ export const PricingPlan: React.FC<IPricingPlan> = (props) => {
             className="line-through text-red-500 ml-1 font-semibold text-2xl"
             richTextDocument={discountedPrice}
           />
-        </p>
+        </div>
         <RichText
           richTextDocument={description}
           classNames={{

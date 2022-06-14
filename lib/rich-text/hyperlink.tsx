@@ -1,14 +1,22 @@
 import React from 'react';
 
-type Props = {
+type HyperLinkProps = {
   data: any;
   content: any;
   type: 'AssetLink' | 'PlainLink';
-  // @ts-ignore
-  cb: ({ data, content, nodeType }) => React.ReactNode;
+  cb: ({
+    data,
+    content,
+    nodeType,
+  }: {
+    data: any;
+    content: any;
+    nodeType: string;
+  }) => React.ReactNode;
 };
 
-export const Hyperlink = (props: Props) => {
+export const Hyperlink = (props: HyperLinkProps) => {
+  console.log({ 'DATA:': props.data });
   const href =
     props.type === 'AssetLink'
       ? props.data.target.fields.file.url

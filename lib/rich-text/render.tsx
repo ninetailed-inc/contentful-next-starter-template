@@ -6,7 +6,7 @@ import {
 } from '@contentful/rich-text-react-renderer';
 import { MergeTag } from '@ninetailed/experience.js-next';
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Hyperlink } from './hyperlink';
 
 export const isRichText = (x: Document | unknown): x is Document => {
@@ -15,11 +15,11 @@ export const isRichText = (x: Document | unknown): x is Document => {
   });
 };
 
-const PlainHyperlink = (props) => {
+const PlainHyperlink = (props: any) => {
   return <Hyperlink {...props} type="PlainLink" />;
 };
 
-const AssetHyperlink = (props) => {
+const AssetHyperlink = (props: any) => {
   return <Hyperlink {...props} type="AssetLink" />;
 };
 
@@ -34,7 +34,7 @@ export type RenderRichTextOptions = {
 export const renderRichText = (
   rtd: Document,
   options: RenderRichTextOptions = {}
-): ReactNode => {
+) => {
   return documentToReactComponents(rtd, {
     renderNode: {
       [INLINES.HYPERLINK]: PlainHyperlink,
