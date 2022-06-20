@@ -1,5 +1,4 @@
 import { ContentfulClientApi, createClient } from 'contentful';
-
 import { IPage, IPageFields } from '@/types/contentful';
 
 const contentfulClient = createClient({
@@ -62,13 +61,6 @@ export async function getPagesOfType(
   const client = getClient(!!pageParams.preview);
   const entries = await client.getEntries<IPageFields>(query);
   const pages = entries.items as IPage[];
-  /**
-   * TODO Why dispose of circular references with parsePage func
-   */
-  /* return pages
-    ? pages.map((page) => {
-        return parsePage(page);
-      })
-    : []; */
+
   return pages || [];
 }
