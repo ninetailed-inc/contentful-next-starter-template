@@ -19,7 +19,7 @@ export const RichText: React.FC<RichTextProps> = ({
   renderNode,
   ...rest
 }) => {
-  console.log({ 'RICHTEXTDOC:': richTextDocument });
+  /*   console.log({ 'RICHTEXTDOC:': richTextDocument }); */
   if (isRichText(richTextDocument)) {
     const component = renderRichText(richTextDocument, {
       classNames,

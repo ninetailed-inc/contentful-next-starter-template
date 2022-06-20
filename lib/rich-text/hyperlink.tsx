@@ -16,7 +16,7 @@ type HyperLinkProps = {
 };
 
 export const Hyperlink = (props: HyperLinkProps) => {
-  console.log({ 'DATA:': props.data });
+  /* console.log({ 'DATA:': props.data }); */
   const href =
     props.type === 'AssetLink'
       ? props.data.target.fields.file.url

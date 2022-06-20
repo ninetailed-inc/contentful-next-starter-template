@@ -30,7 +30,7 @@ export const Form: React.FC<IForm> = ({ fields }) => {
             formIframe.contentDocument?.querySelector(
               'input[name=ninetailedid]'
             ) as HTMLInputElement;
-          console.log(anonymousIdInputTemp);
+          /* console.log(anonymousIdInputTemp); */
           setAnonymousIdInput(anonymousIdInputTemp);
         }
       }

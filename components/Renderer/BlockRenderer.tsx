@@ -66,7 +66,6 @@ const unwrapVariants = (
 };
 
 const BlockRenderer = ({ block }: BlockRendererProps) => {
-  console.log(block);
   if (Array.isArray(block)) {
     return (
       <>
