@@ -1,8 +1,0 @@
-{
-  "name": "@ninetailed/experience.js-node",
-  "version": "1.7.2",
-  "dependencies": {
-    "node-fetch": "^3.0.0",
-    "uuid": "^8.3.2"
-  }
-}
