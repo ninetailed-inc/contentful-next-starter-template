@@ -3,8 +3,6 @@
  * Airbnb: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#eslint-config-airbnbhooks
  * Airbnb Typescript: https://github.com/iamturns/eslint-config-airbnb-typescript
  *
- * TODO
- * Revise rules to remove certain error
  * */
 module.exports = {
   root: true,
