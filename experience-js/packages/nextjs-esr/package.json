@@ -1,7 +1,0 @@
-{
-  "name": "@ninetailed/experience.js-next-esr",
-  "version": "1.7.2",
-  "dependencies": {
-    "next": "12.1.0"
-  }
-}

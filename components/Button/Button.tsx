@@ -20,11 +20,6 @@ export interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = React.forwardRef(
   (props: ButtonProps, ref) => {
-    /* TODO
-     * Component type gets rendered as a button, however, this is not valid HTML
-     * https://html.spec.whatwg.org/multipage/text-level-semantics.html#a.attrs.type
-     * The "type" attribute must the source of the hyper reference source
-     * */
     const {
       as: Component = 'button',
       type,
