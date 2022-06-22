@@ -14,7 +14,7 @@
     "contentful-typescript-codegen": "PATH_TO_ENV_FILE=.env.local contentful-typescript-codegen --output types/contentful.d.ts",
     "setup": "PATH_TO_ENV_FILE=.env.local node ./contentful/setup.js",
     "export": "PATH_TO_ENV_FILE=.env.local node ./contentful/export.js",
-    "build-and-setup": "next build && PATH_TO_ENV_FILE=.env node ./contentful/setup.js"
+    "build-and-setup": "PATH_TO_ENV_FILE=.env node ./contentful/setup.js next build"
   },
   "dependencies": {
     "@aaronhayes/react-use-hubspot-form": "^2.1.1",
