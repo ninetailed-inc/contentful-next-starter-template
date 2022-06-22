@@ -6,7 +6,7 @@ dotEnv.config({ path: `${process.env.PATH_TO_ENV_FILE}` });
 
 const importOptions = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
-  environmentId: process.env.CONTENTFUL_ENVIRONMENT,
+  environmentId: process.env.CONTENTFUL_ENVIRONMENT || 'master',
   managementToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
   contentFile:
     process.env.CONTENTFUL_SPACE_DATA_LOCATION ||
