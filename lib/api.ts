@@ -7,7 +7,7 @@ const contentfulClient = createClient({
 });
 
 const previewClient = createClient({
-  space: process.env.CONTENTFUL_PREVIEW_SPACE_ID ?? '',
+  space: process.env.CONTENTFUL_SPACE_ID ?? '',
   accessToken: process.env.CONTENTFUL_PREVIEW_TOKEN ?? '',
   host: 'preview.contentful.com',
 });

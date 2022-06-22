@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "contentful-typescript-codegen": "PATH_TO_ENV_FILE=.env.local contentful-typescript-codegen --output types/contentful.d.ts",
     "setup": "PATH_TO_ENV_FILE=.env.local node ./contentful/setup.js",
-    "export": "PATH_TO_ENV_FILE=.env.local node ./contentful/export.js"
+    "export": "PATH_TO_ENV_FILE=.env.local node ./contentful/export.js",
+    "vercel-build": "next build && node ./contentful/setup.js"
   },
   "dependencies": {
     "@aaronhayes/react-use-hubspot-form": "^2.1.1",
