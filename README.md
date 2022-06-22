@@ -37,7 +37,7 @@ Apikey -> Apikey = NEXT_PUBLIC_NINETAILED_CLIENT_ID
 Settings -> Api Tokens -> Generate Token -> Roles = Readonly => Client ID = NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID & Secret Key = NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET
 
 At Contentfull
-Setting -> API key -> on Content delivery / preview tokens press Add API Key
+Setting -> API key -> on Content delivery / preview tokens press Add API Key !!!Save
 Setting -> API key -> on Content management tokens -> Generate Personal Token
 
 Before we can start with the automatic deploy
