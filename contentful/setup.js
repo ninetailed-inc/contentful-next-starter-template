@@ -8,13 +8,14 @@ const importOptions = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   environmentId: process.env.CONTENTFUL_ENVIRONMENT,
   managementToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
-  contentFile: process.env.CONTENTFUL_SPACE_DATA_LOCATION,
+  contentFile:
+    process.env.CONTENTFUL_SPACE_DATA_LOCATION ||
+    './contentful/data/contentful-space.json',
 };
 
 if (
   !process.env.CONTENTFUL_SPACE_ID ||
-  !process.env.CONTENTFUL_MANAGEMENT_TOKEN ||
-  !process.env.CONTENTFUL_SPACE_DATA_LOCATION
+  !process.env.CONTENTFUL_MANAGEMENT_TOKEN
 ) {
   throw new Error(
     [
