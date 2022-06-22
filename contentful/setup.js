@@ -10,7 +10,7 @@ const importOptions = {
   managementToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
   contentFile:
     process.env.CONTENTFUL_SPACE_DATA_LOCATION ||
-    './contentful/data/contentful-space.json',
+    './contentful/data/contentful-space-data.json',
 };
 
 if (
