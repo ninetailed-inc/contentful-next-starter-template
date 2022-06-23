@@ -1,12 +1,41 @@
-# Ninetailed Contentful-Next-Starter
+# A Ninetailed website demonstration showcasing content personalization with Contentful and Next.js
+<!-- A website demonstration showcasing Ninetailed's personalization integration for Contentful with Next.js
+   -->
+![](docs/ninetailed-contentful-next-starter-screenshot.png)
+
+This website example demonstrates the Ninetailed content personalization integration for Contentful using Next.js as the web framework.
+
+- [Deploy your own](#Deploy-your-own)
+- [Prerequisites](#Prerequisites)
+  - [User account registration](#user-account-registration)
+
+## Deploy your own
+
+If you are interested in exploring the capabilities of content personalization with Ninetailed and Contentful in more depth you can deploy your own instance on Vercel by pressing this button.\
+
+Before deploying, please read through the [Prerequisites and how-to](#Prerequisites-and-how-to) section as it describes mandatory steps to get the required credentials for the automatic deployment via Vercel.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fninetailed-inc%2Fcontentful-next-starter-CSR&env=NEXT_PUBLIC_NINETAILED_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET,CONTENTFUL_SPACE_ID,CONTENTFUL_TOKEN,CONTENTFUL_PREVIEW_TOKEN,CONTENTFUL_MANAGEMENT_TOKEN&project-name=ninetailed-contentful-next-starter&repository-name=ninetailed-contentful-next-starter&build-command=npm%20run%20build-and-setup)
+
+## Prerequisites and how-to
+Before exploring the content personalization demo by your own, read carefully through this section.
+
+### User account registration
+Register a user account with the following online services if you do not already have one.:
+- [create an account on Github](https://github.com/signup).
+- [create an account on Contentful](https://www.contentful.com/sign-up/).
+- [create an account on Ninetailed](https://app.ninetailed.io/account/sign-up).
 
 
+## Live demo
 
-## Deploy your own on Vercel
+No Demo Yet
+
+## Installation Guide
 
 <!--Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example)-->
 
-### PreRequisite
+### Prerequisite
 
 #### Sign up on Ninetailed and Contentful
 
@@ -137,3 +166,6 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Troubeshooting
