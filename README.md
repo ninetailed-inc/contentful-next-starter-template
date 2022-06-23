@@ -1,41 +1,71 @@
-# A Ninetailed website demonstration showcasing content personalization with Contentful and Next.js
+# A Ninetailed content personalization demonstration website template with Contentful and Next.js
 <!-- A website demonstration showcasing Ninetailed's personalization integration for Contentful with Next.js
    -->
+<!-- A website template for ninetailed personalization with contentful and next.js -->
+<!--Old backup # A Ninetailed website demonstration showcasing content personalization with Contentful and Next.js
+ -->
+
+
 ![](docs/ninetailed-contentful-next-starter-screenshot.png)
 
 This website example demonstrates the Ninetailed content personalization integration for Contentful using Next.js as the web framework.
 
-- [Deploy your own](#Deploy-your-own)
+- [Live Demo](#Live Demo)
+- [Deploy Your Own Playground](#Deploy Your Own Playground)
 - [Prerequisites](#Prerequisites)
-  - [User account registration](#user-account-registration)
+  - [User Account Registration](#User Account Registration)
+  - [Deployment Guide](#Deployment Guide)
+- [Developer Section](#Developer Section)
 
-## Deploy your own
 
-If you are interested in exploring the capabilities of content personalization with Ninetailed and Contentful in more depth you can deploy your own instance on Vercel by pressing this button.\
+## Live Demo
 
-Before deploying, please read through the [Prerequisites and how-to](#Prerequisites-and-how-to) section as it describes mandatory steps to get the required credentials for the automatic deployment via Vercel.
+If you like to discover how content personalization can be applied visit our live demo here.
+
+
+
+## Deploy Your Own Playground Without Code
+
+If you are interested in exploring the capabilities of content personalization with Ninetailed and Contentful in more depth you can deploy your own instance on Vercel by pressing this button.
+
+Before deploying, please read through the [Prerequisites](#Prerequisites) and [Deployment Guide](#Deployment Guide) sections as they describe mandatory steps to get the required credentials for the automatic deployment via Vercel.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fninetailed-inc%2Fcontentful-next-starter-CSR&env=NEXT_PUBLIC_NINETAILED_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET,CONTENTFUL_SPACE_ID,CONTENTFUL_TOKEN,CONTENTFUL_PREVIEW_TOKEN,CONTENTFUL_MANAGEMENT_TOKEN&project-name=ninetailed-contentful-next-starter&repository-name=ninetailed-contentful-next-starter&build-command=npm%20run%20build-and-setup)
 
-## Prerequisites and how-to
+
+### Step 1. 
+
+
+## Prerequisites
 Before exploring the content personalization demo by your own, read carefully through this section.
 
-### User account registration
-Register a user account with the following online services if you do not already have one.:
-- [create an account on Github](https://github.com/signup).
-- [create an account on Contentful](https://www.contentful.com/sign-up/).
-- [create an account on Ninetailed](https://app.ninetailed.io/account/sign-up).
+**WARNING**: Be careful, or else!
+
+### User Account Registration
+Register a user account within the following online services if you do not already have one:
+- [Create an account on GitHub](https://github.com/signup).
+- [Create an account on Contentful](https://www.contentful.com/sign-up/).
+- [Create an account on Ninetailed](https://app.ninetailed.io/account/sign-up).
+
+<!-- side note, for typing in the keys-->
 
 
-## Live demo
+### Deployment Guide
 
-No Demo Yet
+Inorder to automatically deploy your own playgound you need required and safety-relevant credential
 
-## Installation Guide
 
-<!--Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example)-->
 
-### Prerequisite
+
+Important Note:
+If you like to make changes to 
+
+
+## Developer Section
+
+
+<!-- XXXXXXXXXXXXXXXXXX -->
+
 
 #### Sign up on Ninetailed and Contentful
 
@@ -93,7 +123,7 @@ Testing Branch
 Change the build command on vercel if you like to make changes in the code base
 -..and disable the ovverride in the setting section of you project in vercel
 
-## Developer Section
+## Developer Sectionn
 
 ### Getting Started
 
