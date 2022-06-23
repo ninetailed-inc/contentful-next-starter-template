@@ -1,20 +1,16 @@
-# A Ninetailed content personalization demonstration website template with Contentful and Next.js
-<!-- A website demonstration showcasing Ninetailed's personalization integration for Contentful with Next.js
-   -->
-<!-- A website template for ninetailed personalization with contentful and next.js -->
-<!--Old backup # A Ninetailed website demonstration showcasing content personalization with Contentful and Next.js
- -->
-
+#  A website template for Ninetailed personalization with contentful and next.js
 
 ![](docs/ninetailed-contentful-next-starter-screenshot.png)
 
 This website example demonstrates the Ninetailed content personalization integration for Contentful using Next.js as the web framework.
 
 - [Live Demo](#Live Demo)
-- [Deploy Your Own Playground](#Deploy Your Own Playground)
-- [Prerequisites](#Prerequisites)
-  - [User Account Registration](#User Account Registration)
-  - [Deployment Guide](#Deployment Guide)
+- [Deploy Your Own Playground Without Code](#Deploy Your Own Playground Without Code)
+  - [Create a Ninetailed account](#Step 1.-Create a Ninetailed account)
+  - [Create a Contentful account and space](#Step 2.-Create a Contentful account and space)
+  - [Connect Contentful with Ninetailed](#Step 3.-Connect Contentful with Ninetailed)
+  - [Create Contentful API credentials ](#Step 4.-Create Contentful API credentials)
+  - [Create Ninetailed API credentials ](#Step 5.-Create Ninetailed API credentials)
 - [Developer Section](#Developer Section)
 
 
@@ -26,33 +22,53 @@ If you like to discover how content personalization can be applied to a website 
 If you are interested in exploring the capabilities of content personalization with Ninetailed and Contentful in more depth you can deploy your own environment.
 For that, simply follow the instructions which will guide you through the necessary steps.
 
-### Step 1. Create an account on Ninetailed
+### Step 1. Create a Ninetailed account
 - [Click here to sign-up on Ninetailed](https://app.ninetailed.io/account/sign-up).
 
-### Step 2. Create an account and a space on Contentful
+### Step 2. Create a Contentful account and space
 - First, [sign-up on Contentful](https://www.contentful.com/sign-up/).
 - Next, create a new empty **space** from the Contentful dashboard. You can choose any name of your liking for the space.
 
-### Step 2. Connect Contentful with Ninetailed
-- Within your Contentful space, navigate to **Apps** in the navbar and click **manage apps** in the dropdown.
+### Step 3. Connect Contentful with Ninetailed
+- Within your Contentful space, navigate to **Apps** in the navbar and click on **manage apps** in the dropdown.
 - On the next page, scroll down the provided list of available apps and click on the **Ninetailed Personalization** application.
 - Install the Ninetailed Personalization application and authorize access to your space.
 - Afterwards simply click on connect. You will be automatically redirected to your Ninetailed account.
 - Next, authenticate with Contentful
 - At last, select the Contentful space you want to connect to Ninetailed, provide a name for the connection and confirm with **create content source**.
 
-### Step 3. Create API keys and tokens for Contentful
+### Step 4. Create Contentful API credentials
+> ⚠️ **HINT:** Save the created API credentials temporarily in a note or separate file, as you will need to provide them in the last step.
+- Within your Contentful space, navigate to the navigation bar, go to **Settings** and click on **API keys** in the dropdown.
+- Click on **Add API key**.
+- Enter a name for your API key and save it. 
+- Save the **Space ID**, **Content Delivery API - access token** and **Content Preview API - access token** for later use.
+- Go back and select the **Content management tokens** tab.
+- Generate a **Personal Access Token** and make sure to copy it immediately to your note.
 
+### Step 5. Create Ninetailed API credentials
+> ⚠️ **HINT:** Save the created API credentials temporarily in a note or separate file, as you will need to provide them in the last step.
 
-
-### Step 4. Create API keys and tokens for Ninetailed
 
 ### Step X. Deploy your personal playground on Vercel
 
 As the last step, click ob the deploy button
 
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fninetailed-inc%2Fcontentful-next-starter-CSR&env=NEXT_PUBLIC_NINETAILED_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET,CONTENTFUL_SPACE_ID,CONTENTFUL_TOKEN,CONTENTFUL_PREVIEW_TOKEN,CONTENTFUL_MANAGEMENT_TOKEN&project-name=ninetailed-contentful-next-starter&repository-name=ninetailed-contentful-next-starter&build-command=npm%20run%20build-and-setup)
+
+You will need to enter the required Api keys and tokens in the following form
+Here an example:
+
+```bash
+NEXT_PUBLIC_NINETAILED_CLIENT_ID = "API Key"
+NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID = "API Token - Client ID"
+NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET = "API Token - Secret Key"
+CONTENTFUL_SPACE_ID = "Space ID"
+CONTENTFUL_TOKEN = "Content Delivery API - access token"
+CONTENTFUL_PREVIEW_TOKEN = "Content Preview API - access token"
+CONTENTFUL_MANAGEMENT_TOKEN= "Personal Access Token"
+```
+
 
 ## Prerequisites
 Before exploring the content personalization demo by your own, read carefully through this section.
