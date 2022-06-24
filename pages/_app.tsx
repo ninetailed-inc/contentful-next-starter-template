@@ -16,12 +16,13 @@ const B2BDemoApp = ({ Component, pageProps }: AppProps) => {
                 process.env.NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID ?? '',
               secret:
                 process.env.NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET ?? '',
-              environment: process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT ?? '',
+              environment:
+                process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT ?? 'main',
               ui: { opener: { hide: false } },
             }),
           ]}
           clientId={process.env.NEXT_PUBLIC_NINETAILED_CLIENT_ID ?? ''}
-          environment={process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT ?? ''}
+          environment={process.env.NEXT_PUBLIC_NINETAILED_ENVIRONMENT ?? 'main'}
         >
           <Component {...pageProps} />
         </NinetailedProvider>
