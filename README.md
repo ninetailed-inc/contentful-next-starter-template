@@ -8,16 +8,19 @@ Testing Branch
 
 The illustrated website example demonstrates the Ninetailed content personalization integration for Contentful using Next.js as the web framework.
 
-- [Live Demo](#Live-Demo)
-- [Deploy Your Own Playground Without Code](#Deploy-Your-Own-Playground-Without-Code)
-  - [Create a Ninetailed account](#Step-1.-Create-a-Ninetailed-account)
-  - [Create a Contentful account and space](#Step-2.-Create-a-Contentful-account-and-space)
-  - [Connect Contentful with Ninetailed](#Step-3.-Connect-Contentful-with-Ninetailed)
-  - [Create Contentful API credentials](#Step-4.-Create-Contentful-API-credentials)
-  - [Create Ninetailed API credentials](#Step-5.-Create-Ninetailed-API-credentials)
-  - [Deploy Your Personal Playground On Vercel](#Step-6.-Deploy-Your-Personal-Playground-On-Vercel)
-  - [Final Remark](#Step-7.-Final-Remark)
-- [Developer Section](#Developer-Section)
+- [Live Demo](#live-demo)
+- [Deploy Your Own Playground Without Code](#deploy-your-own-playground-without-code)
+  * [Step 1. Create A Ninetailed Account](#step-1-create-a-ninetailed-account)
+  * [Step 2. Create A Contentful Account And Space](#step-2-create-a-contentful-account-and-space)
+  * [Step 3. Connect Contentful With Ninetailed](#step-3-connect-contentful-with-ninetailed)
+  * [Step 4. Create Contentful API Credentials](#step-4-create-contentful-api-credentials)
+  * [Step 5. Create Ninetailed API Credentials](#step-5-create-ninetailed-api-credentials)
+  * [Step 6. Deploy Your Personal Playground On Vercel](#step-6-deploy-your-personal-playground-on-vercel)
+  * [Step 7. Final Remark](#step-7-final-remark)
+- [Developer Section](#developer-section)
+  * [Getting Started](#getting-started)
+  * [Import and Export Data To Contentful](#import-and-export-data-to-contentful)
+  * [Advanced Features](#advanced-features)
 
 ## Live Demo
 
