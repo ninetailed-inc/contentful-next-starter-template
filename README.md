@@ -16,7 +16,6 @@ The illustrated website example demonstrates the Ninetailed content personalizat
 - [Developer Section](#developer-section)
   * [Getting Started](#getting-started)
   * [Import and Export Data To Contentful](#import-and-export-data-to-contentful)
-  * [Advanced Features](#advanced-features)
 
 ## Live Demo
 
@@ -38,7 +37,7 @@ Simply follow the instructions, which will guide you through the necessary steps
 - On the next page, scroll down the provided list of available apps and click on the **Ninetailed Personalization** application.
 - Install the Ninetailed Personalization application and authorize access to your space.
 - Afterwards, click on connect, and you will be automatically redirected to your Ninetailed account.
-- Next, authenticate with Contentful
+- Next, authenticate with Contentful.
 - At last, select the Contentful space you want to connect to Ninetailed, provide a name for the connection and confirm with **create content source**.
 
 ### Step 4. Create Contentful API Credentials
@@ -57,7 +56,7 @@ Simply follow the instructions, which will guide you through the necessary steps
 > ⚠️ **HINT:** Save the created API credentials temporarily in a note or a separate file, as you will need to provide them in the last step.
 - Within your Ninetailed account, click on **API Key** in the sidebar.
 - Save the shown **API Key** (NINETAILED_CLIENT_ID) to your notes.
-- Next, in the sidebar, go to Settings. In the appearing modal, navigate to **API Tokens**.
+- Next, in the sidebar, go to **Settings**. In the appearing modal, navigate to **API Tokens**.
 - Click on **Generate Token**, enter a descriptive phrase, and select **Read Only** as a role.
 - After creation, save the **Client ID** (NINETAILED_MANAGEMENT_CLIENT_ID) and the **Secret Key** (NINETAILED_MANAGEMENT_SECRET).
 
