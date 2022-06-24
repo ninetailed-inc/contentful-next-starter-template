@@ -1,7 +1,5 @@
 #  A website template for Ninetailed personalization with contentful and next.js
 
-
-
 Testing Branch
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fninetailed-inc%2Fcontentful-next-starter-CSR%2Ftree%2Ftesting_deploy-routine&env=NEXT_PUBLIC_NINETAILED_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET,CONTENTFUL_SPACE_ID,CONTENTFUL_TOKEN,CONTENTFUL_PREVIEW_TOKEN,CONTENTFUL_MANAGEMENT_TOKEN&project-name=ninetailed-contentful-next-starter&repository-name=ninetailed-contentful-next-starter&build-command=npm%20run%20build-and-setup)
 
@@ -11,15 +9,15 @@ Testing Branch
 The illustrated website example demonstrates the Ninetailed content personalization integration for Contentful using Next.js as the web framework.
 
 - [Live Demo](#Live-Demo)
-- [Deploy Your Own Playground Without Code](#Deploy-Your Own Playground Without Code)
-  - [Create a Ninetailed account](#Step 1.-Create a Ninetailed account)
-  - [Create a Contentful account and space](#Step 2.-Create a Contentful account and space)
-  - [Connect Contentful with Ninetailed](#Step 3.-Connect Contentful with Ninetailed)
-  - [Create Contentful API credentials](#Step 4.-Create Contentful API credentials)
-  - [Create Ninetailed API credentials](#Step 5.-Create Ninetailed API credentials)
-  - [Deploy Your Personal Playground On Vercel](#Step 6.-Deploy Your Personal Playground On Vercel)
-  - [Final Remark](#Step 7.-Final Remark)
-- [Developer Section](#Developer Section)
+- [Deploy Your Own Playground Without Code](#Deploy-Your-Own-Playground-Without-Code)
+  - [Create a Ninetailed account](#Step-1.-Create-a-Ninetailed-account)
+  - [Create a Contentful account and space](#Step-2.-Create-a-Contentful-account-and-space)
+  - [Connect Contentful with Ninetailed](#Step-3.-Connect-Contentful-with-Ninetailed)
+  - [Create Contentful API credentials](#Step-4.-Create-Contentful-API-credentials)
+  - [Create Ninetailed API credentials](#Step-5.-Create-Ninetailed-API-credentials)
+  - [Deploy Your Personal Playground On Vercel](#Step-6.-Deploy-Your-Personal-Playground-On-Vercel)
+  - [Final Remark](#Step-7.-Final-Remark)
+- [Developer Section](#Developer-Section)
 
 ## Live Demo
 
@@ -72,7 +70,6 @@ For that, simply follow the instructions which will guide you through the necess
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fninetailed-inc%2Fcontentful-next-starter-CSR&env=NEXT_PUBLIC_NINETAILED_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID,NEXT_PUBLIC_NINETAILED_MANAGEMENT_SECRET,CONTENTFUL_SPACE_ID,CONTENTFUL_TOKEN,CONTENTFUL_PREVIEW_TOKEN,CONTENTFUL_MANAGEMENT_TOKEN&project-name=ninetailed-contentful-next-starter&repository-name=ninetailed-contentful-next-starter&build-command=npm%20run%20build-and-setup)
 
 Mnemonic for the credential correlation:
-
 ``` bash
 NEXT_PUBLIC_NINETAILED_CLIENT_ID = "API Key"
 NEXT_PUBLIC_NINETAILED_MANAGEMENT_CLIENT_ID = "API Token - Client ID"
@@ -85,12 +82,10 @@ CONTENTFUL_MANAGEMENT_TOKEN= "Personal Access Token"
 
 ### Step 7. Final Remark
 
-If you like to make changes to
-Change the Vercel buidl command on not ovveride
-
+If you intend to make changes to the source code and publish it in the future, you should first disable the build command override in the project settings on Vercel.
+Otherwise, the template content is populated with each build and eventually overwrites your changes in Contentful.
 
 ## Developer Section
-
 
 ### Getting Started
 
