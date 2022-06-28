@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNinetailed, useProfile } from '@ninetailed/experience.js-next';
 import { Field, Form as ContactForm } from 'react-final-form';
 import * as Yup from 'yup';
@@ -9,16 +9,11 @@ export const Form: React.FC = () => {
   const { identify } = useNinetailed();
   const [showForm, setShowForm] = useState<boolean>(true);
 
-  type FormTraits = {
+  type Traits = {
     [key: string]: string;
   };
 
-  useEffect(() => {
-    console.log(profile);
-  }, [profile]);
-
-  const onSubmit = async (values: FormTraits) => {
-    console.log(values);
+  const onSubmit = async (values: Traits) => {
     if (profile) {
       identify(profile.id, values)
         .then((_) => {
