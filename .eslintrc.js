@@ -30,6 +30,14 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'react/no-array-index-key': 'warn',
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        required: {
+          some: ['id'],
+        },
+      },
+    ],
     'prettier/prettier': ['error'],
   },
   overrides: [
@@ -52,6 +60,10 @@ module.exports = {
         '@typescript-eslint/no-unsafe-member-access': 'off',
         'import/no-unresolved': 'error',
         'prettier/prettier': 'error',
+        '@typescript-eslint/no-misused-promises': [
+          'error',
+          { checksVoidReturn: false },
+        ],
       },
     },
   ],
