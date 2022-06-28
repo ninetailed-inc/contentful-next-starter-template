@@ -17,7 +17,6 @@
     "build-and-setup": "PATH_TO_ENV_FILE=.env node ./contentful/setup.js && next build"
   },
   "dependencies": {
-    "@aaronhayes/react-use-hubspot-form": "2.1.1",
     "@contentful/rich-text-react-renderer": "15.12.0",
     "@contentful/rich-text-types": "15.12.0",
     "@heroicons/react": "1.0.6",
