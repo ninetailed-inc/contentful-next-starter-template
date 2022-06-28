@@ -2,16 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useNinetailed, useProfile } from '@ninetailed/experience.js-next';
 import { Field, Form as ContactForm } from 'react-final-form';
 import * as Yup from 'yup';
+import { makeValidate } from '@/lib/Validation';
 
-const defaultErrorMessage = 'Please complete this required field';
 export const Form: React.FC = () => {
   const { profile } = useProfile();
   const { identify } = useNinetailed();
   const [showForm, setShowForm] = useState<boolean>(true);
-
-  type ErrorType = {
-    [key: string]: unknown;
-  };
 
   type FormTraits = {
     [key: string]: string;
@@ -35,50 +31,14 @@ export const Form: React.FC = () => {
     setShowForm(false);
   };
 
-  /* const validationSchema = Yup.object({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required(),
-    companyName: Yup.string().required(),
-    companySize: Yup.string().required(),
-    businessEmail: Yup.string().email(),
-  }); */
-  /* type FormValidationSchema = Yup.InferType<typeof validationSchema>;
-  const validateFormValues = (schema: FormValidationSchema) => {
-    return async (values: any) => {
-      /!* if (typeof schema === 'function') {
-        schema = schema();
-      } *!/
-      try {
-        await schema.validate(values, { abortEarly: false });
-      } catch (err) {
-        const errors = err.inner.reduce((formError, innerError) => {
-          return setIn(formError, innerError.path, innerError.message);
-        }, {});
-
-        return errors;
-      }
-    };
-  };
-
-  const validate = validateFormValues(validationSchema);
-  const validate = async (values) => {
-    try {
-      await validationSchema.validate(values, { abortEarly: false });
-    } catch (err: unknown) {
-      console.log(err.inner);
-      /* return err.inner.reduce(
-        (formError: any, innerError: { path: any; message: any }) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-          return {
-            ...formError,
-            [innerError.path]: innerError.message,
-          };
-        },
-        {}
-      );
-    }
-  }} */
-
+  const validationSchema = Yup.object({
+    'First Name': Yup.string().required(),
+    'Last Name': Yup.string().required(),
+    'Company Name': Yup.string().required(),
+    'Company Size': Yup.string().ensure().required(),
+    'Business Email': Yup.string().email().required(),
+  });
+  const validate = makeValidate(validationSchema);
   return (
     <>
       <div
@@ -89,29 +49,8 @@ export const Form: React.FC = () => {
         {showForm ? (
           <ContactForm
             onSubmit={onSubmit}
-            validate={(values) => {
-              const errors = {} as ErrorType;
-              if (!values.firstname) {
-                errors.firstname = defaultErrorMessage;
-              }
-              if (!values.lastname) {
-                errors.lastname = defaultErrorMessage;
-              }
-              if (!values.companyName) {
-                errors.companyName = defaultErrorMessage;
-              }
-              if (
-                !values.companySize ||
-                values.companySize === 'defaultValue'
-              ) {
-                errors.companySize = defaultErrorMessage;
-              }
-              if (!values.businessEmail) {
-                errors.businessEmail = defaultErrorMessage;
-              }
-              return errors;
-            }}
-            initialValues={{ companySize: 'defaultValue' }}
+            validate={validate}
+            initialValues={{ 'Company Size': '' }}
             render={({ handleSubmit }) => {
               return (
                 <form
@@ -119,16 +58,11 @@ export const Form: React.FC = () => {
                   className="flex flex-col space-y-4 items-start"
                 >
                   <fieldset className="flex flex-row w-full justify-between">
-                    <Field
-                      name="firstName"
-                      validate={(value) => {
-                        return value ? undefined : 'Required';
-                      }}
-                    >
+                    <Field name="First Name">
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="firstName" className="text-[14px]">
+                            <label htmlFor="First Name" className="text-[14px]">
                               First Name
                               <span className="text-[#f2545b]">*</span>
                             </label>
@@ -147,11 +81,11 @@ export const Form: React.FC = () => {
                         );
                       }}
                     </Field>
-                    <Field name="lastName">
+                    <Field name="Last Name">
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="lastName" className="text-[14px]">
+                            <label htmlFor="Last Name" className="text-[14px]">
                               Last Name<span className="text-[#f2545b]">*</span>
                             </label>
                             <input
@@ -171,12 +105,12 @@ export const Form: React.FC = () => {
                     </Field>
                   </fieldset>
                   <fieldset className="flex flex-row w-full">
-                    <Field name="companyName">
+                    <Field name="Company Name">
                       {({ input, meta }) => {
                         return (
                           <div className="w-full flex flex-col">
                             <label
-                              htmlFor="companyName"
+                              htmlFor="Company Name"
                               className="text-[14px]"
                             >
                               Company name
@@ -200,22 +134,20 @@ export const Form: React.FC = () => {
                   </fieldset>
 
                   <fieldset className="flex flex-col w-full ">
-                    <label htmlFor="companySize" className="text-[14px]">
+                    <label htmlFor="Company Size" className="text-[14px]">
                       Company Size<span className="text-[#f2545b]">*</span>
                     </label>
-                    <Field name="companySize" placeholder="Select your option">
+                    <Field name="Company Size" placeholder="Select your option">
                       {({ input, meta }) => {
                         return (
                           <>
                             <select
                               {...input}
                               className={` border-2 bg-[#f5f8fa] h-[40px] px-[15px] focus:outline-indigo-600 border-[1px] rounded-[3px] border-[#cbd6e2] ${
-                                input.value === 'defaultValue'
-                                  ? 'text-gray-400'
-                                  : ''
+                                input.value === '' ? 'text-gray-400' : ''
                               }`}
                             >
-                              <option value="defaultValue" disabled>
+                              <option value="" disabled>
                                 Select your option
                               </option>
                               <option value="1-50">1-50</option>
@@ -238,12 +170,12 @@ export const Form: React.FC = () => {
                     </Field>
                   </fieldset>
                   <fieldset className="flex flex-row w-full">
-                    <Field name="businessEmail">
+                    <Field name="Business Email">
                       {({ input, meta }) => {
                         return (
                           <div className="w-full flex flex-col">
                             <label
-                              htmlFor="businessEmail"
+                              htmlFor="Business Email"
                               className="text-[14px]"
                             >
                               Business Email
