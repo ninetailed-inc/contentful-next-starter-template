@@ -36,7 +36,8 @@
     "next-seo": "5.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-final-form": "^6.5.9"
+    "react-final-form": "^6.5.9",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/lodash": "4.14.181",

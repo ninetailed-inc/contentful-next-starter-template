@@ -1,101 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { useHubspotForm } from '@aaronhayes/react-use-hubspot-form';
 import { useNinetailed, useProfile } from '@ninetailed/experience.js-next';
-import find from 'lodash/find';
-import { Form as ContactForm, Field } from 'react-final-form';
-import { IForm } from '@/types/contentful';
+import { Field, Form as ContactForm } from 'react-final-form';
+import * as Yup from 'yup';
 
-/* interface IMessageEvent {
-  type: string;
-  eventName: string;
-  data: Record<string, string>[] | undefined;
-} */
-
-export const Form: React.FC<IForm> = () => {
+const defaultErrorMessage = 'Please complete this required field';
+export const Form: React.FC = () => {
   const { profile } = useProfile();
   const { identify } = useNinetailed();
-  /* const [anonymousIdInput, setAnonymousIdInput] =
-    useState<HTMLInputElement | null>(null);
-  const [submitData, setSubmitData] = useState<Record<string, string>[]>();
-  useEffect(() => {
-    const listener = (event: MessageEvent<IMessageEvent>): void => {
-      if (
-        event.data.type === 'hsFormCallback' &&
-        event.data.eventName === 'onFormReady'
-      ) {
-        const formIframe = document.querySelector(
-          '#form > iframe'
-        ) as HTMLIFrameElement;
-        if (formIframe) {
-          const anonymousIdInputTemp =
-            formIframe.contentDocument?.querySelector(
-              'input[name=ninetailedid]'
-            ) as HTMLInputElement;
-          setAnonymousIdInput(anonymousIdInputTemp);
-        }
-      }
+  const [showForm, setShowForm] = useState<boolean>(true);
 
-      if (
-        event.data.type === 'hsFormCallback' &&
-        event.data.eventName === 'onFormSubmit'
-      ) {
-        setSubmitData(event.data.data);
-      }
+  type ErrorType = {
+    [key: string]: unknown;
+  };
 
-      if (
-        event.data.type === 'hsFormCallback' &&
-        event.data.eventName === 'onFormSubmitted'
-      ) {
-        const anonymousIdObject = find(submitData, {
-          name: 'ninetailedid',
-        }) as { name: string; value: string };
-        const { value: anonymousId } = anonymousIdObject;
-        const traits = submitData
-          ?.filter(({ name }) => {
-            return name !== 'ninetailedid';
-          })
-          .reduce((acc, curr) => {
-            return { ...acc, [curr.name]: curr.value };
-          }, {});
-        console.log({ 'anonymousId:': anonymousId });
-        identify(anonymousId, traits)
-          .then((_) => {
-            return _;
-          })
-          .catch((e: Error) => {
-            return e;
-          });
-      }
-    };
-    window.addEventListener('message', listener);
-    return () => {
-      window.removeEventListener('message', listener);
-    };
-  }, [setAnonymousIdInput, setSubmitData, submitData]);
+  type FormTraits = {
+    [key: string]: string;
+  };
 
-  useEffect(() => {
-    if (
-      profile &&
-      anonymousIdInput &&
-      !loading &&
-      anonymousIdInput.value !== profile.id
-    ) {
-      anonymousIdInput.value = profile.id;
-    }
-  }, [anonymousIdInput, loading, profile]);
-
-  useHubspotForm({
-    target: '#form',
-    /!* region: fields.hubspotPortalRegion, *!/
-    portalId: fields.hubspotPortalId,
-    formId: fields.hubspotFormId,
-  });
-*/
   useEffect(() => {
     console.log(profile);
   }, [profile]);
-
-  const [showForm, setShowForm] = useState<boolean>(true);
 
   const onSubmit = async (values: FormTraits) => {
     console.log(values);
@@ -110,15 +34,51 @@ export const Form: React.FC<IForm> = () => {
     }
     setShowForm(false);
   };
-  type ErrorType = {
-    [key: string]: unknown;
+
+  /* const validationSchema = Yup.object({
+    firstName: Yup.string().required(),
+    lastName: Yup.string().required(),
+    companyName: Yup.string().required(),
+    companySize: Yup.string().required(),
+    businessEmail: Yup.string().email(),
+  }); */
+  /* type FormValidationSchema = Yup.InferType<typeof validationSchema>;
+  const validateFormValues = (schema: FormValidationSchema) => {
+    return async (values: any) => {
+      /!* if (typeof schema === 'function') {
+        schema = schema();
+      } *!/
+      try {
+        await schema.validate(values, { abortEarly: false });
+      } catch (err) {
+        const errors = err.inner.reduce((formError, innerError) => {
+          return setIn(formError, innerError.path, innerError.message);
+        }, {});
+
+        return errors;
+      }
+    };
   };
 
-  type FormTraits = {
-    [key: string]: string;
-  };
+  const validate = validateFormValues(validationSchema);
+  const validate = async (values) => {
+    try {
+      await validationSchema.validate(values, { abortEarly: false });
+    } catch (err: unknown) {
+      console.log(err.inner);
+      /* return err.inner.reduce(
+        (formError: any, innerError: { path: any; message: any }) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+          return {
+            ...formError,
+            [innerError.path]: innerError.message,
+          };
+        },
+        {}
+      );
+    }
+  }} */
 
-  const defaultErrorMessage = 'Please complete this required field';
   return (
     <>
       <div
@@ -129,7 +89,6 @@ export const Form: React.FC<IForm> = () => {
         {showForm ? (
           <ContactForm
             onSubmit={onSubmit}
-            initialValues={{ companySize: 'defaultValue' }}
             validate={(values) => {
               const errors = {} as ErrorType;
               if (!values.firstname) {
@@ -152,18 +111,24 @@ export const Form: React.FC<IForm> = () => {
               }
               return errors;
             }}
-            render={({ handleSubmit, values }) => {
+            initialValues={{ companySize: 'defaultValue' }}
+            render={({ handleSubmit }) => {
               return (
                 <form
                   onSubmit={handleSubmit}
                   className="flex flex-col space-y-4 items-start"
                 >
                   <fieldset className="flex flex-row w-full justify-between">
-                    <Field name="firstname">
+                    <Field
+                      name="firstName"
+                      validate={(value) => {
+                        return value ? undefined : 'Required';
+                      }}
+                    >
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="firstname" className="text-[14px]">
+                            <label htmlFor="firstName" className="text-[14px]">
                               First Name
                               <span className="text-[#f2545b]">*</span>
                             </label>
@@ -182,11 +147,11 @@ export const Form: React.FC<IForm> = () => {
                         );
                       }}
                     </Field>
-                    <Field name="lastname">
+                    <Field name="lastName">
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="lastname" className="text-[14px]">
+                            <label htmlFor="lastName" className="text-[14px]">
                               Last Name<span className="text-[#f2545b]">*</span>
                             </label>
                             <input
@@ -240,8 +205,6 @@ export const Form: React.FC<IForm> = () => {
                     </label>
                     <Field name="companySize" placeholder="Select your option">
                       {({ input, meta }) => {
-                        /* console.log({ 'INPUT:': input });
-                      console.log({ 'Meta:': meta }); */
                         return (
                           <>
                             <select
@@ -309,7 +272,6 @@ export const Form: React.FC<IForm> = () => {
                   >
                     Submit
                   </button>
-                  {/* <pre>{JSON.stringify(values, null, 3)}</pre> */}
                 </form>
               );
             }}
