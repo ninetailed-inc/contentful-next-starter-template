@@ -25,13 +25,13 @@ export const Form: React.FC = () => {
     }
     setShowForm(false);
   };
-
+  const errorTextRequired = 'is required';
   const validationSchema = Yup.object({
-    'First Name': Yup.string().required(),
-    'Last Name': Yup.string().required(),
-    'Company Name': Yup.string().required(),
-    'Company Size': Yup.string().ensure().required(),
-    'Business Email': Yup.string().email().required(),
+    firstname: Yup.string().required(`First Name ${errorTextRequired}`),
+    lastname: Yup.string().required(`Last Name ${errorTextRequired}`),
+    companyname: Yup.string().required(`Company Name ${errorTextRequired}`),
+    companysize: Yup.string().ensure().required(`Company ${errorTextRequired}`),
+    email: Yup.string().email().required(`Business Email ${errorTextRequired}`),
   });
   const validate = makeValidate(validationSchema);
   return (
@@ -45,7 +45,6 @@ export const Form: React.FC = () => {
           <ContactForm
             onSubmit={onSubmit}
             validate={validate}
-            initialValues={{ 'Company Size': '' }}
             render={({ handleSubmit }) => {
               return (
                 <form
@@ -53,11 +52,11 @@ export const Form: React.FC = () => {
                   className="flex flex-col space-y-4 items-start"
                 >
                   <fieldset className="flex flex-row w-full justify-between">
-                    <Field name="First Name">
+                    <Field name="firstname">
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="First Name" className="text-[14px]">
+                            <label htmlFor="firstname" className="text-[14px]">
                               First Name
                               <span className="text-[#f2545b]">*</span>
                             </label>
@@ -76,11 +75,11 @@ export const Form: React.FC = () => {
                         );
                       }}
                     </Field>
-                    <Field name="Last Name">
+                    <Field name="lastname">
                       {({ input, meta }) => {
                         return (
                           <div className="w-[48%] flex flex-col">
-                            <label htmlFor="Last Name" className="text-[14px]">
+                            <label htmlFor="lastname" className="text-[14px]">
                               Last Name<span className="text-[#f2545b]">*</span>
                             </label>
                             <input
@@ -100,12 +99,12 @@ export const Form: React.FC = () => {
                     </Field>
                   </fieldset>
                   <fieldset className="flex flex-row w-full">
-                    <Field name="Company Name">
+                    <Field name="companyname">
                       {({ input, meta }) => {
                         return (
                           <div className="w-full flex flex-col">
                             <label
-                              htmlFor="Company Name"
+                              htmlFor="companyname"
                               className="text-[14px]"
                             >
                               Company name
@@ -129,10 +128,10 @@ export const Form: React.FC = () => {
                   </fieldset>
 
                   <fieldset className="flex flex-col w-full ">
-                    <label htmlFor="Company Size" className="text-[14px]">
+                    <label htmlFor="companysize" className="text-[14px]">
                       Company Size<span className="text-[#f2545b]">*</span>
                     </label>
-                    <Field name="Company Size" placeholder="Select your option">
+                    <Field name="companysize" placeholder="Select your option">
                       {({ input, meta }) => {
                         return (
                           <>
@@ -165,14 +164,11 @@ export const Form: React.FC = () => {
                     </Field>
                   </fieldset>
                   <fieldset className="flex flex-row w-full">
-                    <Field name="Business Email">
+                    <Field name="email">
                       {({ input, meta }) => {
                         return (
                           <div className="w-full flex flex-col">
-                            <label
-                              htmlFor="Business Email"
-                              className="text-[14px]"
-                            >
+                            <label htmlFor="email" className="text-[14px]">
                               Business Email
                               <span className="text-[#f2545b]">*</span>
                             </label>
