@@ -26,13 +26,12 @@ const Page = ({ page }: { page: IPage }) => {
         nofollow={page.fields.seo?.fields.no_follow as boolean}
         noindex={page.fields.seo?.fields.no_index as boolean}
       />
-      <div className="w-full">
+      <div className="w-full h-full flex flex-col">
         {banner && <BlockRenderer block={banner} />}
         {navigation && <BlockRenderer block={navigation} />}
         <main>
           <BlockRenderer block={sections} />
         </main>
-
         {footer && <BlockRenderer block={footer} />}
       </div>
     </>
