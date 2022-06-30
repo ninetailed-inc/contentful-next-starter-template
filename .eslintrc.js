@@ -16,22 +16,19 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'no-unsafe-optional-chaining': 'warn',
-    'react/jsx-filename-extension': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'react/function-component-definition': [
-      2,
-      { namedComponents: 'arrow-function' },
-    ],
+    'no-console': 'off',
     'arrow-body-style': ['error', 'always'],
     'import/prefer-default-export': 'off',
-    'no-console': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/react-in-jsx-scope': 'off',
     'react/destructuring-assignment': 'off',
+    'react/function-component-definition': [
+      'error',
+      { namedComponents: 'arrow-function' },
+    ],
     'jsx-a11y/anchor-is-valid': 'off',
-    'react/no-array-index-key': 'warn',
     'jsx-a11y/label-has-associated-control': [
-      2,
+      'error',
       {
         required: {
           some: ['id'],
@@ -54,16 +51,16 @@ module.exports = {
         project: ['tsconfig.json'],
       },
       rules: {
+        'import/no-unresolved': 'error',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/naming-convention': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
-        'import/no-unresolved': 'error',
-        'prettier/prettier': 'error',
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: false },
         ],
+        'prettier/prettier': 'error',
       },
     },
   ],
