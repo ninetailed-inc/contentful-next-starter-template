@@ -9,7 +9,6 @@ html {
 body, #__next {
     display: flex;
 }
-
 body, #__next, .app {
     flex-grow: 1;
 }

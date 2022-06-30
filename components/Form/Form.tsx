@@ -13,7 +13,7 @@ export const Form: React.FC = () => {
     [key: string]: string;
   };
 
-  const onSubmit = async (values: Traits) => {
+  const onSubmit = (values: Traits) => {
     if (profile) {
       identify(profile.id, values)
         .then((_) => {

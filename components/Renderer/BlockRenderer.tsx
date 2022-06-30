@@ -69,8 +69,8 @@ const BlockRenderer = ({ block }: BlockRendererProps) => {
   if (Array.isArray(block)) {
     return (
       <>
-        {block.map((b, index) => {
-          return <BlockRenderer key={`block-${b.sys.id}-${index}`} block={b} />;
+        {block.map((b) => {
+          return <BlockRenderer key={`block-${b.sys.id}`} block={b} />;
         })}
       </>
     );
