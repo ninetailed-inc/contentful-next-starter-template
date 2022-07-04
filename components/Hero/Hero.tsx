@@ -90,7 +90,7 @@ export const Hero: React.FC<IHero> = ({ fields }) => {
             </div>
 
             <div className="hidden relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl lg:max-w-none lg:pl-12 md:block">
-              {fields.image.fields.file.details.image && (
+              {fields.image.fields?.file.details.image && (
                 <Image
                   loader={ContentfulImageLoader}
                   layout="fixed"
@@ -114,7 +114,7 @@ export const Hero: React.FC<IHero> = ({ fields }) => {
             </div>
 
             <div className="relative px-4 sm:mx-auto sm:max-w-3xl lg:max-w-none lg:pl-12 md:hidden">
-              {fields.image.fields.file.details.image && (
+              {fields.image.fields?.file.details.image && (
                 <Image
                   loader={ContentfulImageLoader}
                   src={`https:${fields.image.fields.file.url}`}

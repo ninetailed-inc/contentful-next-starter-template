@@ -76,7 +76,7 @@ export const Feature: React.FC<IFeature> = ({ fields }) => {
               fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)"
             />
           </svg>
-          {fields.image.fields.file.details.image && (
+          {fields.image.fields?.file.details.image && (
             <Image
               loader={ContentfulImageLoader}
               src={`https:${fields.image.fields.file.url}`}
